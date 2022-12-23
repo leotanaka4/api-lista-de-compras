@@ -21,7 +21,11 @@ export class ItemService {
   }
 
   findOne(id: string): Promise<Item> {
-    return this.repository.findOne(id);
+    return this.repository.findOne({
+      where: {
+        id: id,
+      },
+    });
   }
 
   async update(id: string, updateItemDto: UpdateItemDto): Promise<Item> {
